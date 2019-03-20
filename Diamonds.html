@@ -1,0 +1,110 @@
+<!doctype html>
+<!--/export/home/cs200/cs200139/Documents/homework/homework2/Diamonds.html                -->
+<!-- Nathan Reichert                                                                      -->
+<!-- Section 4                                                                            -->
+<!-- Created 12/08/2013                                                                   -->
+<!-- Last Edited 12/11/2013                                                               -->
+<!-- The purpose of this page is to demonstrate ability of several nested loops to        -->
+<!-- Generate shapes using ASCII characters                                               -->
+<!-- ==================================================================================== -->
+<html>
+    <head>
+        <title>Nathan Reichert * CSCI 200 * Assignment #2 * 9 Dec. 2013</title>
+        <script type="text/javascript">
+        function diamondInvasion(size)
+        {
+        	if ((document.getElementById('box1').value)<2)     // If box value is less than 2
+        		alert('Value must be greater than 2.');        // Alert is raised, user needs to chose value greater than 2
+        	else{                                              // If box value >= 2, program will run
+        		var sout;
+        		sout='';                                       // Initializing top of solid diamond
+        		for (i=size; i>=1; i--)
+            	{
+            		for (j=1; j<=size; j++)
+            		{
+                		if(j>=i)
+                        	sout+='*';
+                    	else
+                    		sout+='&nbsp;';
+                	}
+                	for (j=size; j>=1; j--)
+                	{
+                		if (j>i)
+                			sout+='*';
+                		else
+                			sout+='&nbsp;';
+                	}
+            	sout+='<br>';
+            	}
+			document.write(sout);                              // Printing top of solid diamond
+            	sout='';                                       // Initializing bottom of solid diamond
+            	for (i=1; i<size; i++)
+            	{
+            		for (j=1; j<=size; j++)
+            		{
+            			if (j>i)
+            				sout+='*';
+            			else
+            				sout+='&nbsp;';
+            		}
+            		for (j=(size-1); j>1; j--)
+            		{
+            			if (j>i)
+            				sout+='*';
+            			else
+            				sout+='&nbsp;';
+            		}
+            	sout+='<br>';
+            	}
+        	sout+='<br><br>';
+        	document.write(sout);                              // Printing bottom of solid diamond
+        		sout='';                                       // Initializing top of hollow diamond
+        		for (i=size; i>=1; i--)
+            	{
+            		for (j=1; j<=size; j++)
+            		{
+                		if(j==i)
+                        	sout+='*';
+                    	else
+                    		sout+='&nbsp;';
+                	}
+                	for (j=(size-1); j>=1; j--)
+                	{
+                		if (j==i)
+                			sout+='*';
+                		else
+                			sout+='&nbsp;';
+                	}
+            	sout+='<br>';
+            	}
+			document.write(sout);                              // Printing top of hollow diamond
+            	sout='';                                       // Initializing bottom of hollow diamond
+            	for (i=1; i<size; i++)
+            	{
+            		for (j=0; j<size; j++)
+            		{
+            			if (j==i)
+            				sout+='*';
+            			else
+            				sout+='&nbsp;';
+            		}
+            		for (j=size-2; j>=1; j--)
+            		{
+            			if (j==i)
+            				sout+='*';
+            			else
+            				sout+='&nbsp;';
+            		}
+            	sout+='<br>';
+            	}
+        	document.write(sout);                              // Printing bottom of hollow diamond
+        	}
+        }
+        </script>
+    </head>
+    <body>
+    	<center><h1><tt>Nathan Reichert * CSCI 200 * Assignment #2 * 9 Dec. 2013</tt></h1>
+    	<p>Choose the size of your triangle (Number of '*' per side [Must be greater than 2]):</p>
+        <input type="text" id="box1" size="13" value="0" onchange="diamondInvasion(parseFloat(document.getElementById('box1').value));">
+    </body>
+</html>
